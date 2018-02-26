@@ -63,8 +63,8 @@ jobs:
         TERM: dumb
         version: 0.4.0
   - put: cf-prod
-    inputs: built-project
     params:
+      inputs: built-project
       manifest: ./manifest.yml
       environment_variables:
         CF_TARGET: {{prod_cf_api}}
