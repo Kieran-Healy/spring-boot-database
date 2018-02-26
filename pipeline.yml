@@ -53,6 +53,7 @@ jobs:
           cd database
           ls
           ./mvnw package
+          ls
       params:
         TERM: dumb
         version: 0.4.0
