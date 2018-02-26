@@ -44,7 +44,7 @@ jobs:
       inputs:
         - name: database
       outputs:
-        - name: built-project
+        - name: database
       run:
         path: sh
         args:
@@ -56,11 +56,8 @@ jobs:
           ls
           cd target
           ls
-          cp ./database-0.0.1-SNAPSHOT.jar ../../built-project
           cp ./database-0.0.1-SNAPSHOT.jar ../
           cd ../
-          ls
-          cd ../built-project
           ls
       params:
         TERM: dumb
