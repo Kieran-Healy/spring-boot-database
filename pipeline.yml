@@ -1,0 +1,79 @@
+jobs:
+- name: unit-test
+  public: true
+  serial: true
+  plan:
+  - get: database
+    trigger: true
+  - task: unit-test-task
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: java
+          tag: '8'
+      inputs:
+        - name: database
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          pwd
+          cd ~/Downloads/workspace/database
+          ./mvnw test
+      params:
+        TERM: dumb
+        version: 0.4.0
+
+- name: deploy
+  public: true
+  serial: true
+  plan:
+  - get: database
+    passed: [unit-test]
+    trigger: true
+  - task: build-task
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: java
+          tag: '8'
+      inputs:
+        - name: database
+      outputs:
+        - name: built-project
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          cd ~/Downloads/workspace/database
+          ./mvnw package
+      params:
+        TERM: dumb
+        version: 0.4.0
+  - put: cf-prod
+    params:
+      manifest: ./manifest.yml
+      environment_variables:
+        CF_TARGET: {{prod_cf_api}}
+
+resources:
+- name: database
+  type: git
+  source:
+    uri: https://github.com/Kieran-Healy/spring-boot-database
+
+- name: cf-prod
+  type: cf
+  source:
+    api: {{prod_cf_api}}
+    username: {{prod_cf_username}}
+    password: {{prod_cf_password}}
+    organization: {{prod_cf_org}}
+    space: {{prod_cf_space}}
+    skip_cert_check: true
