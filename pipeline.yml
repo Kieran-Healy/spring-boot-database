@@ -21,7 +21,6 @@ jobs:
         - -exc
         - |
           cd database
-          ls
           ./mvnw test
       params:
         TERM: dumb
@@ -51,6 +50,7 @@ jobs:
         args:
         - -exc
         - |
+          cd database
           ./mvnw package
       params:
         TERM: dumb
