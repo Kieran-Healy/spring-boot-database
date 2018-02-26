@@ -51,6 +51,7 @@ jobs:
         - -exc
         - |
           cd database
+          ls
           ./mvnw package
       params:
         TERM: dumb
