@@ -57,7 +57,7 @@ jobs:
           cd target
           ls
           cp ./database-0.0.1-SNAPSHOT.jar ../
-          cd ../built-project
+          cd ../../built-project
           ls
       params:
         TERM: dumb
