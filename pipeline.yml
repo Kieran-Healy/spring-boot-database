@@ -44,7 +44,7 @@ jobs:
       inputs:
         - name: database
       outputs:
-        - name: database
+        - name: built-project
       run:
         path: sh
         args:
