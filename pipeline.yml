@@ -57,6 +57,8 @@ jobs:
           cd target
           ls
           cp ./database-0.0.1-SNAPSHOT.jar ../
+          cd ../
+          ls
       params:
         TERM: dumb
         version: 0.4.0
