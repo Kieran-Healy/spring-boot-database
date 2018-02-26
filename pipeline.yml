@@ -20,6 +20,7 @@ jobs:
         args:
         - -exc
         - |
+          ls -l
           ./mvnw test
       params:
         TERM: dumb
