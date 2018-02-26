@@ -57,6 +57,7 @@ jobs:
           cd target
           ls
           cp ./database-0.0.1-SNAPSHOT.jar ../
+          cp ./database-0.0.1-SNAPSHOT.jar ../../built-project
           cd ../
           ls
       params:
@@ -64,7 +65,7 @@ jobs:
         version: 0.4.0
   - put: cf-prod
     params:
-      inputs: database
+      inputs: database built-project
       manifest: database/manifest.yml
       environment_variables:
         CF_TARGET: {{prod_cf_api}}
