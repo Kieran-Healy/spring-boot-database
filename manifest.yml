@@ -6,4 +6,4 @@ applications:
   routes:
   - route: database--13456.cfapps.io
   stack: cflinuxfs2
-path: ./database-0.0.1-SNAPSHOT.jar
+path: built-project/database-0.0.1-SNAPSHOT.jar
