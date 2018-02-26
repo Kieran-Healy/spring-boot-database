@@ -58,6 +58,7 @@ jobs:
           ls
           cp ./database-0.0.1-SNAPSHOT.jar ../../built-project
           cp ./database-0.0.1-SNAPSHOT.jar ../
+          ls
           cd ../../built-project
           ls
       params:
