@@ -20,8 +20,6 @@ jobs:
         args:
         - -exc
         - |
-          pwd
-          cd ~/Downloads/workspace/database
           ./mvnw test
       params:
         TERM: dumb
@@ -51,7 +49,6 @@ jobs:
         args:
         - -exc
         - |
-          cd ~/Downloads/workspace/database
           ./mvnw package
       params:
         TERM: dumb
